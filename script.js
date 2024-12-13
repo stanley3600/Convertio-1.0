@@ -39,6 +39,19 @@ document.getElementById('unitConverterForm').addEventListener('submit', function
     } else {
         convertedValue = value; 
     }
+
+    else if (
+        ((fromUnit === 'grams' || fromUnit === 'kilograms' || fromUnit === 'meters' || fromUnit === 'kilometers') &&
+        (toUnit === 'celsius' || toUnit === 'fahrenheit')) ||
+        ((fromUnit === 'celsius' || fromUnit === 'fahrenheit') &&
+        (toUnit === 'grams' || toUnit === 'kilograms' || toUnit === 'meters' || toUnit === 'kilometers'))
+    ) {
+        alert('Invalid syntax: Please check your  convertion units  and try again.');
+        return;
+    } else {
+        convertedValue = value;
+    }
+    
     document.getElementById('convertedValue').textContent = convertedValue.toFixed(2);
     document.getElementById('unitSymbols').textContent = `${fromUnitSymbol} → ${toUnitSymbol}`;
 });
