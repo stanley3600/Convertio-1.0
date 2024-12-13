@@ -33,14 +33,10 @@ document.getElementById('unitConverterForm').addEventListener('submit', function
     } else if (fromUnit === 'kilograms' && toUnit === 'grams') {
         convertedValue = value * 1000;
     } else if (fromUnit === 'celsius' && toUnit === 'fahrenheit') {
-        convertedValue = (value * 9/5) + 32;
+        convertedValue = (value * 9 / 5) + 32;
     } else if (fromUnit === 'fahrenheit' && toUnit === 'celsius') {
-        convertedValue = (value - 32) * 5/9;
-    } else {
-        convertedValue = value; 
-    }
-
-    else if (
+        convertedValue = (value - 32) * 5 / 9;
+    } else if (
         ((fromUnit === 'grams' || fromUnit === 'kilograms' || fromUnit === 'meters' || fromUnit === 'kilometers') &&
         (toUnit === 'celsius' || toUnit === 'fahrenheit')) ||
         ((fromUnit === 'celsius' || fromUnit === 'fahrenheit') &&
