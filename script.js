@@ -42,7 +42,7 @@ document.getElementById('unitConverterForm').addEventListener('submit', function
         ((fromUnit === 'celsius' || fromUnit === 'fahrenheit') &&
         (toUnit === 'grams' || toUnit === 'kilograms' || toUnit === 'meters' || toUnit === 'kilometers'))
     ) {
-        alert('Invalid syntax: Please check your  convertion units  and try again.');
+        alert('Invalid syntax: Please check your convertion units and try again.');
         return;
     } else {
         convertedValue = value;
