@@ -1,14 +1,17 @@
-document.getElementById('unitConverterForm').addEventListener('submit', function(e) {
+document.getElementById('unitConverterForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Get input values
     const value = parseFloat(document.getElementById('valueInput').value);
     const fromUnit = document.getElementById('fromUnit').value;
     const toUnit = document.getElementById('toUnit').value;
 
-    // Validate input value
     if (isNaN(value)) {
         alert('Please enter a valid number.');
+        return;
+    }
+
+    if (fromUnit === toUnit) {
+        alert('Cannot convert a unit to itself. Please select different units.');
         return;
     }
 
@@ -40,11 +43,7 @@ document.getElementById('unitConverterForm').addEventListener('submit', function
         convertedValue = (value * 9 / 5) + 32;
     } else if (fromUnit === 'fahrenheit' && toUnit === 'celsius') {
         convertedValue = (value - 32) * 5 / 9;
-    } else if (fromUnit === toUnit) {
-        convertedValue = value; // Same unit conversion
     } else {
-
-        
         alert('Please check your conversion units and try again.');
         return;
     }
