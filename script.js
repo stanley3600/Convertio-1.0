@@ -1,14 +1,17 @@
 document.getElementById('unitConverterForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
+    // Get input values
     const value = parseFloat(document.getElementById('valueInput').value);
     const fromUnit = document.getElementById('fromUnit').value;
     const toUnit = document.getElementById('toUnit').value;
 
+    // Validate input value
     if (isNaN(value)) {
         alert('Please enter a valid number.');
         return;
     }
+
     let convertedValue;
     let fromUnitSymbol;
     let toUnitSymbol;
@@ -21,6 +24,7 @@ document.getElementById('unitConverterForm').addEventListener('submit', function
         celsius: "°C",
         fahrenheit: "°F"
     };
+
     fromUnitSymbol = unitSymbols[fromUnit];
     toUnitSymbol = unitSymbols[toUnit];
 
@@ -36,18 +40,15 @@ document.getElementById('unitConverterForm').addEventListener('submit', function
         convertedValue = (value * 9 / 5) + 32;
     } else if (fromUnit === 'fahrenheit' && toUnit === 'celsius') {
         convertedValue = (value - 32) * 5 / 9;
-    } else if (
-        ((fromUnit === 'grams' || fromUnit === 'kilograms' || fromUnit === 'meters' || fromUnit === 'kilometers') &&
-        (toUnit === 'celsius' || toUnit === 'fahrenheit')) ||
-        ((fromUnit === 'celsius' || fromUnit === 'fahrenheit') &&
-        (toUnit === 'grams' || toUnit === 'kilograms' || toUnit === 'meters' || toUnit === 'kilometers'))
-    ) {
-        alert('Invalid syntax: Please check your convertion units and try again.');
-        return;
+    } else if (fromUnit === toUnit) {
+        convertedValue = value; // Same unit conversion
     } else {
-        convertedValue = value;
+
+        
+        alert('Please check your conversion units and try again.');
+        return;
     }
-    
+
     document.getElementById('convertedValue').textContent = convertedValue.toFixed(2);
     document.getElementById('unitSymbols').textContent = `${fromUnitSymbol} → ${toUnitSymbol}`;
 });
